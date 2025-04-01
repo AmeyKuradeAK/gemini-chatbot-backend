@@ -11,6 +11,7 @@ const allowedOrigins = ['https://gemini-chatbot-frontend-zeta.vercel.app/']; // 
 
 app.use(cors({
   origin: (origin, callback) => {
+    console.log("Request origin:", origin); // Add this line to log the origin
     if (!origin || allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
