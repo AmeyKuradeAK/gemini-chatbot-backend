@@ -1,0 +1,39 @@
+# Node.js
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+jspm_packages/
+
+# Build output
+dist/
+build/
+
+# Environment files
+.env
+.env.* 
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+
+# npm and yarn lock files
+package-lock.json
+yarn.lock
+
+# Coverage folder (if you use code coverage tools like Istanbul or nyc)
+coverage/
+
+# Next.js specific files (if you're using Next.js in your project)
+.next/
