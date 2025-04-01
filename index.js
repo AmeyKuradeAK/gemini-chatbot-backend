@@ -1,7 +1,9 @@
-require("dotenv").config();
-const express = require("express");
-const cors = require("cors");
-const axios = require("axios");
+import dotenv from "dotenv";
+import express from "express";
+import cors from "cors";
+import axios from "axios";
+
+dotenv.config();
 
 const app = express();
 app.use(express.json());
@@ -25,7 +27,7 @@ app.post("/chat", async (req, res) => {
         const response = await axios.post(
             "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent",
             {
-                contents: [{ role: "user", parts: [{ text: userMessage }] }] 
+                messages: [{ author: "user", content: userMessage }]
             },
             {
                 params: { key: GEMINI_API_KEY },
