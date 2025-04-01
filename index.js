@@ -16,6 +16,7 @@ app.use(cors());
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
 app.post("/chat", async (req, res) => {
+    console.log("Received message:", req.body.message);  // Log incoming message
     try {
         const userMessage = req.body.message;
 
