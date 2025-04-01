@@ -6,19 +6,12 @@ const axios = require("axios");
 const app = express();
 app.use(express.json());
 
-// Allow CORS from your frontend's origin (change it as per your frontend URL)
-const allowedOrigins = ['https://gemini-chatbot-frontend-zeta.vercel.app/', 'http://localhost:3000'];  // Replace with your frontend URL
+// Enable CORS for all origins (for debugging purposes)
+app.use(cors());
 
-app.use(cors({
-  origin: (origin, callback) => {
-    console.log("Request origin:", origin); // Log request origin for debugging
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  }
-}));
+// Or specify a more restrictive policy by adding the origins you want to allow:
+// const allowedOrigins = ['https://your-frontend-url.com', 'http://localhost:3000'];  
+// app.use(cors({ origin: allowedOrigins }));
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
@@ -29,7 +22,7 @@ app.post("/chat", async (req, res) => {
         const response = await axios.post(
             "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent",
             {
-                contents: [{ role: "user", parts: [{ text: userMessage }] }], 
+                contents: [{ role: "user", parts: [{ text: userMessage }] }] 
             },
             {
                 params: { key: GEMINI_API_KEY },
