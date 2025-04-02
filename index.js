@@ -23,15 +23,16 @@ app.post("/chat", async (req, res) => {
         const userMessage = req.body.message;
 
         const response = await axios.post(
-            "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent",
+            "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent", // Updated model version
             {
-                messages: [{ author: "user", content: userMessage }]
+                contents: [{ role: "user", parts: [{ text: userMessage }] }]  // Corrected format
             },
             {
                 params: { key: GEMINI_API_KEY },
                 headers: { "Content-Type": "application/json" },
             }
         );
+        
 
         console.log("Gemini Response:", JSON.stringify(response.data, null, 2));
 
