@@ -9,9 +9,7 @@ const app = express();
 app.use(express.json());
 
 // Enable CORS for all origins (for debugging purposes)
-app.use(cors({
-    origin: "https://gemini-chatbot-frontend-zeta.vercel.app/", // Replace with your frontend URL
-}));
+app.use(cors());
 
 // Or specify a more restrictive policy by adding the origins you want to allow:
 // const allowedOrigins = ['https://your-frontend-url.com', 'http://localhost:3000'];  
